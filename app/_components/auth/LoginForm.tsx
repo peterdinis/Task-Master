@@ -37,7 +37,7 @@ const LoginForm: FC = () => {
 			<Card className="w-full max-w-md mx-auto">
 				<CardHeader>
 					<CardTitle className="text-2xl font-bold">
-						Login to Jira Clone
+						Task Master Login
 					</CardTitle>
 					<CardDescription>
 						Enter your credentials to access your account

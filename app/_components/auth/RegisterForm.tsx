@@ -39,7 +39,7 @@ const RegisterForm: FC = () => {
 			<Card className="w-full max-w-md mx-auto">
 				<CardHeader>
 					<CardTitle className="text-2xl font-bold">
-						Login to Jira Clone
+						Create Account in Task Master
 					</CardTitle>
 					<CardDescription>
 						Enter your credentials to access your account
