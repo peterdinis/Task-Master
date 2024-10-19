@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { MountainIcon } from 'lucide-react';
+import { MdAssignment } from "react-icons/md";
 import Link from 'next/link';
 import type { FC } from 'react';
 import ThemeButton from './ThemeToggle';
@@ -11,8 +11,8 @@ const Navigation: FC = () => {
 				<div className="w-full max-w-7xl mx-auto px-4">
 					<div className="flex justify-between h-14 items-center">
 						<Link href="#" className="flex items-center" prefetch={false}>
-							<MountainIcon className="h-6 w-6" />
-							<span className="sr-only">Acme Inc</span>
+							<MdAssignment className="h-6 w-6" />
+							<span className='ml-2 font-bold'>Task Master</span>
 						</Link>
 						<nav className="hidden md:flex gap-4">
 							<Link
@@ -46,9 +46,13 @@ const Navigation: FC = () => {
 						</nav>
 						<div className="flex items-center gap-4">
 							<Button variant="outline" size="sm">
-								Sign in
+								<Link href="/login">
+								Login</Link>
 							</Button>
-							<Button size="sm">Sign up</Button>
+							<Button size="sm">
+								<Link href="/register">
+								Register</Link>
+							</Button>
 							<ThemeButton />
 						</div>
 					</div>
