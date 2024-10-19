@@ -1,11 +1,7 @@
-import { FC } from "react";
+import type { FC } from 'react';
 
 const ProfileInfo: FC = () => {
-    return (
-        <>
-        aaa
-        </>
-    )
-}
+	return <>aaa</>;
+};
 
 export default ProfileInfo;
