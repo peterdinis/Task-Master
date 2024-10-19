@@ -1,8 +1,8 @@
-import ProfileInfo from "@/app/_components/auth/ProfileInfo";
-import { NextPage } from "next";
+import ProfileInfo from '@/app/_components/auth/ProfileInfo';
+import type { NextPage } from 'next';
 
 const ProfilePage: NextPage = () => {
-    return <ProfileInfo />
-}
+	return <ProfileInfo />;
+};
 
 export default ProfilePage;
