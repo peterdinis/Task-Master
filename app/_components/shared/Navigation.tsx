@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
-import { MdAssignment } from "react-icons/md";
 import Link from 'next/link';
 import type { FC } from 'react';
+import { MdAssignment } from 'react-icons/md';
 import ThemeButton from './ThemeToggle';
 
 const Navigation: FC = () => {
@@ -12,7 +12,7 @@ const Navigation: FC = () => {
 					<div className="flex justify-between h-14 items-center">
 						<Link href="#" className="flex items-center" prefetch={false}>
 							<MdAssignment className="h-6 w-6" />
-							<span className='ml-2 font-bold'>Task Master</span>
+							<span className="ml-2 font-bold">Task Master</span>
 						</Link>
 						<nav className="hidden md:flex gap-4">
 							<Link
@@ -46,12 +46,10 @@ const Navigation: FC = () => {
 						</nav>
 						<div className="flex items-center gap-4">
 							<Button variant="outline" size="sm">
-								<Link href="/login">
-								Login</Link>
+								<Link href="/login">Login</Link>
 							</Button>
 							<Button size="sm">
-								<Link href="/register">
-								Register</Link>
+								<Link href="/register">Register</Link>
 							</Button>
 							<ThemeButton />
 						</div>
