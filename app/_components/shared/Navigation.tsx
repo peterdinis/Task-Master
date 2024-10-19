@@ -46,9 +46,13 @@ const Navigation: FC = () => {
 						</nav>
 						<div className="flex items-center gap-4">
 							<Button variant="outline" size="sm">
-								Sign in
+								<Link href="/login">
+								Login</Link>
 							</Button>
-							<Button size="sm">Sign up</Button>
+							<Button size="sm">
+								<Link href="/register">
+								Register</Link>
+							</Button>
 							<ThemeButton />
 						</div>
 					</div>
