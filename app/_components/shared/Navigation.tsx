@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { MountainIcon } from 'lucide-react';
 import Link from 'next/link';
 import type { FC } from 'react';
+import ThemeButton from './ThemeToggle';
 
 const Navigation: FC = () => {
 	return (
@@ -48,6 +49,7 @@ const Navigation: FC = () => {
 								Sign in
 							</Button>
 							<Button size="sm">Sign up</Button>
+							<ThemeButton />
 						</div>
 					</div>
 				</div>
