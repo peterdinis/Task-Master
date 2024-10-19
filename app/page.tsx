@@ -1,11 +1,7 @@
-import { NextPage } from "next";
+import type { NextPage } from 'next';
 
 const Homepage: NextPage = () => {
-	return (
-		<div className="mt-16 ml-2">
-			Later
-		</div>
-	)
-}
+	return <div className="mt-16 ml-2">Later</div>;
+};
 
 export default Homepage;
