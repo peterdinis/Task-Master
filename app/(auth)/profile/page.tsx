@@ -1,11 +1,8 @@
+import ProfileInfo from "@/app/_components/auth/ProfileInfo";
 import { NextPage } from "next";
 
 const ProfilePage: NextPage = () => {
-    return (
-        <>
-            PROFILE
-        </>
-    )
+    return <ProfileInfo />
 }
 
 export default ProfilePage;
