@@ -2,7 +2,7 @@ import { Hono } from "hono";
 import { zValidator } from "@hono/zod-validator";
 import { loginSchema } from "@/app/_schemas/authSchema";
 
-const app = new Hono().post(
+const loginRoute = new Hono().post(
   "/login",
   zValidator(
     "json",
@@ -15,4 +15,4 @@ const app = new Hono().post(
   }
 );
 
-export default app;
+export default loginRoute;

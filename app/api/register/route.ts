@@ -1,9 +1,19 @@
 import { Hono } from "hono";
+import { zValidator } from "@hono/zod-validator";
+import { registerSchema } from "@/app/_schemas/authSchema";
 
-const app = new Hono().post("/register", (c) => {
+
+const registerRoute = new Hono().post(
+  "/register",
+  zValidator(
+    "json",
+   registerSchema
+  ),
+  (c) => {
     return c.json({
-        hello: "world"
-    })
-})
+      hello: "world",
+    });
+  }
+);
 
-export default app;
+export default registerRoute;
