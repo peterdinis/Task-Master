@@ -1,5 +1,6 @@
 'use client';
 
+import { useLogin } from '@/app/_hooks/auth/useLogin';
 import { Button } from '@/components/ui/button';
 import {
 	Card,
@@ -12,24 +13,38 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { AlertCircle } from 'lucide-react';
-import { type FC, useState } from 'react';
+import type { FC } from 'react';
+import { type SubmitHandler, useForm } from 'react-hook-form';
+
+type LoginFormInputs = {
+	email: string;
+	password: string;
+};
 
 const LoginForm: FC = () => {
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
-	const [error, setError] = useState('');
+	// Initialize the react-hook-form methods
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<LoginFormInputs>();
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		setError('');
+	// Use your custom useLogin hook
+	const { mutate: login, isPending, error } = useLogin();
 
-		if (!email || !password) {
-			setError('Please fill in all fields');
-			return;
-		}
-
-		console.log('Login attempt with:', { email, password });
-		setError('Invalid email or password');
+	// Handle form submission
+	const onSubmit: SubmitHandler<LoginFormInputs> = (data) => {
+		login(
+			{ json: data },
+			{
+				onError: () => {
+					console.error('Login failed');
+				},
+				onSuccess: () => {
+					console.log('Login successful');
+				},
+			},
+		);
 	};
 
 	return (
@@ -44,17 +59,20 @@ const LoginForm: FC = () => {
 					</CardDescription>
 				</CardHeader>
 				<CardContent>
-					<form onSubmit={handleSubmit} className="space-y-4">
+					<form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 						<div className="space-y-2">
 							<Label htmlFor="email">Email</Label>
 							<Input
 								id="email"
 								type="email"
 								placeholder="Enter your email"
-								value={email}
-								onChange={(e) => setEmail(e.target.value)}
-								required
+								// Use react-hook-form's register method to handle input
+								{...register('email', { required: 'Email is required' })}
 							/>
+							{/* Display error if email field is invalid */}
+							{errors.email && (
+								<p className="text-red-500 text-sm">{errors.email.message}</p>
+							)}
 						</div>
 						<div className="space-y-2">
 							<Label htmlFor="password">Password</Label>
@@ -62,19 +80,25 @@ const LoginForm: FC = () => {
 								id="password"
 								type="password"
 								placeholder="Enter your password"
-								value={password}
-								onChange={(e) => setPassword(e.target.value)}
-								required
+								// Use react-hook-form's register method to handle input
+								{...register('password', { required: 'Password is required' })}
 							/>
+							{/* Display error if password field is invalid */}
+							{errors.password && (
+								<p className="text-red-500 text-sm">
+									{errors.password.message}
+								</p>
+							)}
 						</div>
+						{/* Show API error if login fails */}
 						{error && (
 							<div className="text-red-500 text-sm flex items-center">
 								<AlertCircle className="w-4 h-4 mr-2" />
-								{error}
+								{error.message || 'Invalid email or password'}
 							</div>
 						)}
-						<Button type="submit" className="w-full">
-							Login
+						<Button type="submit" className="w-full" disabled={isPending}>
+							{isPending ? 'Logging in...' : 'Login'}
 						</Button>
 					</form>
 				</CardContent>

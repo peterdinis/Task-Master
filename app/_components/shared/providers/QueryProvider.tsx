@@ -7,7 +7,7 @@ import type { FC, ReactNode } from 'react';
 
 interface IQueryProviderProps {
 	children?: ReactNode;
-} 
+}
 
 const QueryProvider: FC<IQueryProviderProps> = ({
 	children,

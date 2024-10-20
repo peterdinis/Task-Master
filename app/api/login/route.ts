@@ -1,18 +1,13 @@
-import { Hono } from "hono";
-import { zValidator } from "@hono/zod-validator";
-import { loginSchema } from "@/app/_schemas/authSchema";
+import { loginSchema } from '@/app/_schemas/authSchema';
+import { zValidator } from '@hono/zod-validator';
+import { Hono } from 'hono';
 
 const loginRoute = new Hono().post(
-  "/login",
-  zValidator(
-    "json",
-    loginSchema
-  ),
-  (c) => {
-    return c.json({
-      hello: "world",
-    });
-  }
+	'/',
+	zValidator('json', loginSchema),
+	async (c) => {
+		return c.json({ message: 'Login successful' });
+	},
 );
 
 export default loginRoute;
